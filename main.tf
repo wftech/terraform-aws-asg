@@ -71,7 +71,7 @@ resource "aws_launch_configuration" "main" {
   key_name             = var.instance_key
   user_data            = var.user_data
   user_data_base64     = var.user_data_base64
-  enable_monitoring    = false
+  enable_monitoring    = var.enable_monitoring
 
   dynamic "ebs_block_device" {
     iterator = device
@@ -125,6 +125,7 @@ Resources:
       LaunchConfigurationName: "${aws_launch_configuration.main.id}"
       MinSize: "${var.min_size}"
       MaxSize: "${var.max_size}"
+      DesiredCapacity: "${var.min_size}"
       MetricsCollection:
         - Granularity: 1Minute
           Metrics:

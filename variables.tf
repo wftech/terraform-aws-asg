@@ -66,6 +66,12 @@ variable "instance_volume_size" {
   default     = 30
 }
 
+variable "enable_monitoring" {
+  description = "Enable EC2 detailed (1-minute) monitoring. Incurs CloudWatch costs."
+  type        = bool
+  default     = true
+}
+
 variable "ebs_block_devices" {
   description = "Additional EBS block devices to attach to the instance."
   type        = list(map(string))
